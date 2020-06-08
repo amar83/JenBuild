@@ -1,5 +1,10 @@
-node {
+pipeline {
     def app
+    
+    environment{
+	registry = "ramapa/getintodevops-hellonode"
+	registryCredential = docker-hub-credentials
+    }
 
     stage('Clone repository') {
 	checkout scm
@@ -9,7 +14,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials').build("getintodevops-hellonode")
+        app = docker..build registry + ":$BUILD_NUMBER"
     }
 
     stage('Test image') {
