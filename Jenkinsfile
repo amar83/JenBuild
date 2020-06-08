@@ -1,9 +1,9 @@
-pipeline {
+node {
     def app
     
     environment{
 	registry = "ramapa/getintodevops-hellonode"
-	registryCredential = docker-hub-credentials
+	registryCredential = $docker-hub-credentials
     }
 
     stage('Clone repository') {
