@@ -2,7 +2,8 @@ node {
     def app
 
     stage('Clone repository') {
-	git clone https://github.com/amar83/JenBuild
+#	git clone https://github.com/amar83/JenBuild
+	checkout scm
     }
 
     stage('Build image') {
