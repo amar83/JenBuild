@@ -14,7 +14,7 @@ pipeline {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker..build registry + ":$BUILD_NUMBER"
+        app = docker:wq!.build registry + ":$BUILD_NUMBER"
     }
 
     stage('Test image') {
